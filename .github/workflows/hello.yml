@@ -1,10 +1,14 @@
-name: Hello Agile
+name: Conditional Hello Agile
 
-on: [push]
+on:
+  push:
+    branches: [ dev ]       # Run workflow on pushes to 'dev'
+  pull_request:
+    branches: [ main ]      # Run workflow on PRs targeting 'main'
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
       - name: Print Hello
-        run: echo "Hello from GitHub Actions!"
+        run: echo "Hello from GitHub Actions triggered by branch rules!"
